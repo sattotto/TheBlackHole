@@ -159,19 +159,19 @@
 #あなた
 あなたは，黒い円からポテトチップスを取り出す．[p]
 手に持つ黒い円を眺めポテトチップスを食べる．[p]
-@jump target=*desk_common
+@jump target=*desk_common2
 
 *book2
 #あなた
 あなたは，黒い円から本を取り出す．[p]
 本を少し確認して机の中に戻した．[p]
-@jump target=*desk_common
+@jump target=*desk_common2
 
 *document2
 #あなた
 あなたは，黒い円から書類を取り出す．[p]
 書類にはいろいろな重要なことが書いてある．[p]
-@jump target=*desk_common
+@jump target=*desk_common2
 
 *desk_common2
 
@@ -199,13 +199,17 @@
 [autosave]
 
 *VendingMachine_end
+
 自動販売機からいろいろとものを取り出しているといつの間にか時間が立っていたようだ．[p]
 後ろから誰かが一部始終を見ていたのかあなたは後ろから肩を叩かれる[p]
 後ろを向くと警備員が立っており近くに落ちているジュースや手に持っているお金について言及をされてしまう．[p]
 
-言い訳もできず，一部始終を見ていた警備員にあなたは捕まってしまいました．
+言い訳もできず，一部始終を見ていた警備員にあなたは捕まってしまいました．[p]
 
 お疲れ様でした．これでシステムを終了します．[p]
+
+画面はこのままでお願いします．[p]
+
 @jump scene=new file=wide/title
 
 *desk2
@@ -230,5 +234,7 @@
 
 
 お疲れ様でした．これでシステムを終了します．[p]
+
+画面はこのままでお願いします．[p]
 
 @jump scene=new file=wide/title
