@@ -1,0 +1,234 @@
+@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージ表示
+[showmessage]
+[call file=wide/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+
+;---------------キャラ定義
+
+;@tag_default tag="chara"
+;[chara_new name="yuko" storage="chara" jname="ゆうこ" scale=2 jcolor=FF77FF]
+;[chara_new name="mai" storage="kiri" jname="麻衣" scale=2 jcolor=22FFFF]
+;@reset_tag_default
+
+;ゆうこの表情登録
+;[chara_face name="yuko" face="angry" storage=chara_a ]
+;[chara_face name="yuko" face="komaru" storage=chara_k ]
+;[chara_face name="yuko" face="warau" storage=chara_w ]
+
+;麻衣の表情登録
+;[chara_face name="mai" face="angry" storage=kiri_a ]
+;[chara_face name="mai" face="komaru" storage=kiri_k ]
+
+
+;@chara_pos name="yuko" x=0 y=-0.7
+;@chara_pos name="mai" x=-5 y=-0.7
+
+;@show name=yuko
+
+;[playbgm wait=false time=1 storage="music"]
+
+#あなた
+あなたは，自分の仕事の疲れからいつの間にか寝てしまっていました．[p]
+
+そしてあなたは誰もいない自分の職場で目を覚ましました。[p]
+
+コピー機が動いているのに気づきあなたはコピー機の前まで行く[p]
+
+コピー機からは1枚の紙に，黒い円が印刷されて出てきました．[p]
+
+あなたは，この紙に違和感を覚え黒い円の部分を触ってみました．[p]
+
+そうすると，手は円の中に吸い込まれました．[p]
+
+あなたは，びっくりして手を引きました．[p]
+
+あなたは，なにかに不思議に思い，机の上において手を入れてみました．[p]
+
+なにかに手があたりそれを掴んで取り出しました．[l][r]何が出てきた？[p]
+
+[autosave]
+
+[select_new text="お菓子" target=chips]
+[select_new text="本" target=book]
+[select_new text="書類" target=document]
+
+[select_show sound=click]
+[autosave]
+
+*chips
+#あなた
+あなたは，黒い円からポテトチップスを取り出す．[p]
+あなたは取り出したものを何度も机の中に入れたり，取り出したりしてみる．[p]
+@jump target=*a_common
+
+*book
+#あなた
+あなたは，黒い円から本を取り出す．[p]
+あなたは取り出したものを何度も机の中に入れたり，取り出したりしてみる．[p]
+@jump target=*a_common
+
+*document
+#あなた
+あなたは，黒い円から書類を取り出す．[p]
+あなたは取り出したものを何度も机の中に入れたり，取り出したりしてみる．[p]
+@jump target=*a_common
+
+*a_common 
+
+[autosave]
+
+周囲を見渡し，何かを見つけました．[l][r]何を見つけた？[p]
+
+[autosave]
+
+[select_new text="自動販売機" target=VendingMachine]
+[select_new text="他の同僚の机" target=desk]
+
+[select_show sound=click]
+[autosave]
+
+*VendingMachine
+
+あなたは，黒い円を持って自動販売機の前まで駆け寄る．[p]
+@jump target=*VendingMachine_common
+
+*desk
+
+あなたは，黒い円を持って机まで駆け寄る．[p]
+
+@jump target=*desk_common
+
+*VendingMachine_common
+
+周囲に誰もいないことを確認し，黒い円を自動販売機に押し当てて，手を入れる．[p]
+
+[autosave]
+
+[select_new text="コーラ" target=drink]
+[select_new text="お茶" target=drink]
+[select_new text="お金" target=money]
+
+[select_show sound=click]
+[autosave]
+
+*drink
+
+あなたは，自動販売機からジュースを取り出す．[p]
+手に持つ黒い円を眺め，ジュースを開けて飲む．[p]
+
+@jump target=*VendingMachine_common2
+
+*money
+
+あなたは，取り出したお金を見つめ手の中で弾いたりしてみる．[p]
+
+@jump target=*VendingMachine_common2
+
+*VendingMachine_common2
+
+次は何をしようかと思い，あなたは周囲を見渡す．[l]何が目に止まった？[p]
+
+[autosave]
+
+[select_new text="自動販売機" target=VendingMachine2]
+[select_new text="同僚の机" target=desk]
+
+[select_show sound=click]
+[autosave]
+
+*desk_common
+
+周囲に誰もいないことを確認し，黒い円を同僚の机に押し当てて，手を入れる．[p]
+
+[autosave]
+
+[select_new text="お菓子" target=chips2]
+[select_new text="本" target=book2]
+[select_new text="書類" target=document2]
+
+[select_show sound=click]
+[autosave]
+
+*chips2
+#あなた
+あなたは，黒い円からポテトチップスを取り出す．[p]
+手に持つ黒い円を眺めポテトチップスを食べる．[p]
+@jump target=*desk_common
+
+*book2
+#あなた
+あなたは，黒い円から本を取り出す．[p]
+本を少し確認して机の中に戻した．[p]
+@jump target=*desk_common
+
+*document2
+#あなた
+あなたは，黒い円から書類を取り出す．[p]
+書類にはいろいろな重要なことが書いてある．[p]
+@jump target=*desk_common
+
+*desk_common2
+
+次は何をしようかと思い，あなたは周囲を見渡す．[l]何が目に止まった？[p]
+
+[autosave]
+
+[select_new text="自動販売機" target=VendingMachine]
+[select_new text="同僚の机" target=desk2]
+
+[select_show sound=click]
+[autosave]
+
+*VendingMachine2
+
+周囲に誰もいないことを確認し，黒い円を自動販売機に押し当てて，手を入れる．[p]
+
+[autosave]
+
+[select_new text="コーラ" target=VendingMachine_end]
+[select_new text="お茶" target=VendingMachine_end]
+[select_new text="お金" target=VendingMachine_end]
+
+[select_show sound=click]
+[autosave]
+
+*VendingMachine_end
+自動販売機からいろいろとものを取り出しているといつの間にか時間が立っていたようだ．[p]
+後ろから誰かが一部始終を見ていたのかあなたは後ろから肩を叩かれる[p]
+後ろを向くと警備員が立っており近くに落ちているジュースや手に持っているお金について言及をされてしまう．[p]
+
+言い訳もできず，一部始終を見ていた警備員にあなたは捕まってしまいました．
+
+お疲れ様でした．これでシステムを終了します．[p]
+@jump scene=new file=wide/title
+
+*desk2
+
+周囲に誰もいないことを確認し，黒い円を同僚の机に押し当てて，手を入れる．[p]
+
+[autosave]
+
+[select_new text="お菓子" target=desk_end]
+[select_new text="本" target=desk_end]
+[select_new text="書類" target=desk_end]
+
+[select_show sound=click]
+[autosave]
+
+*desk_end
+
+次々に同僚の机の中を黒い円を使って漁るあなた．[p]
+いつの間にか朝になってしまっており机をあさっているところを同僚に見られてしまったあなた．[p]
+
+警備員に捕まってしまい，[l]手に持っていた黒い円も消えてただの白い紙に戻ってしまっていました．[p]
+
+
+お疲れ様でした．これでシステムを終了します．[p]
+
+@jump scene=new file=wide/title
